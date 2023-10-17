@@ -486,49 +486,6 @@ Codes for each step reported below can be found here [Day_4 Codes](https://githu
 
 ![Screenshot from 2023-10-15 22-11-23](https://github.com/Abhi9108865162/RISC-V/assets/141741065/027c2ff4-5486-4eba-8b2e-efa69317620e)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
 </details>
 
 
@@ -537,8 +494,53 @@ Codes for each step reported below can be found here [Day_4 Codes](https://githu
 
 <summary><b> DAY 5 </b></summary>
 
+ # Pipelining the CPU
+Pipelining in a CPU is like an assembly line in a factory, where different tasks are divided into smaller stages and performed one after another to improve efficiency.
+
+In a CPU pipeline, the execution of instructions is broken down into several stages. Each stage performs a specific task, such as fetching an instruction, decoding it, executing it, and storing the result. Instead of waiting for one instruction to finish before starting the next, different instructions can be in different stages of the pipeline simultaneously. This way, the CPU can work on multiple instructions at once, which speeds up the overall processing.
+
+Think of it as an assembly line in a factory where cars are being built. Instead of one person doing all the tasks to build a car, each task is performed by a different worker stationed at different stages of the assembly line. As the car chassis moves from one station to the next, each worker adds a part or performs a specific task. This division of labor and parallel processing speeds up the car production. Similarly, in a CPU pipeline, dividing instruction execution into stages allows for faster and more efficient processing of instructions.
+
+ 
+## Introduction To Control Flow Hazard And Read After Write Hazard
+ 
+
+ 
+Control flow hazards and read-after-write hazards are important concepts in computer architecture and pipeline processing. They refer to situations where the normal execution flow of a program is disrupted, leading to potential issues in the performance and correctness of a processor.
+
+ -  Control Flow Hazard:
+
+    Control flow hazards, also known as control hazards or branch hazards, occur when there is a change in the program's control flow that affects the execution of instructions in a pipeline. These hazards can cause delays and pipeline stalls. There are primarily three types of control flow hazards:
+
+    a. Branch Hazards: Branch instructions like conditional branches and jumps can lead to control hazards. When a branch instruction is encountered, the processor may not yet know which path to take, causing a stall in the pipeline until the decision is made. Various techniques like branch prediction and speculative execution are used to mitigate the impact of branch hazards.
+
+    b. Jump Hazards: Jump instructions can also create control hazards. A jump instruction transfers control to a different part of the program, potentially causing the processor to incorrectly execute instructions after the jump.
+
+    c. Return Hazards: In the case of function calls and returns, return hazards can occur. When a function is about to return, there might be instructions that follow the return point. These instructions should not execute or affect the result of the program. Stalls or forwarding mechanisms can be used to handle return hazards.
+
+-  Read After Write Hazard (RAW Hazard):
+
+    Read after write hazards, also known as data hazards, occur when an instruction depends on the result of a previous instruction. These dependencies can lead to incorrect results or stalls in the pipeline. There are three main types of RAW hazards:
+
+    a. True Dependency (RAW): In a true dependency, an instruction depends on the actual value produced by a previous instruction. For example, if instruction A writes to a register, and instruction B reads from the same register, B cannot proceed until A has written the data.
+
+    b. Antidependency (WAR): In an antidependency, an instruction writes to a register that a subsequent instruction reads from before the write is complete. This situation can lead to incorrect results if not properly managed.
+
+    c. Output Dependency (WAW): In an output dependency, two instructions write to the same register, and the order of writes is critical. If instruction A writes to a register and then instruction B also writes to the same register without waiting for A to complete, the result depends on the order of execution.
 
 
+![Screenshot from 2023-10-17 21-47-29](https://github.com/Abhi9108865162/RISCV/assets/141741065/c0c42a2e-05c6-4eb6-9cd9-c2f3827faf46)
+
+
+
+
+
+
+
+
+  - Lab To Create 3-Cycle Valid Signal
+  - Lab To Code 3-Cycle RISC-V To Take Care Of Invalid Cycles
+  - Lab To Modify 3-Cycle RISC-V To Distribute Logic
 
   
 </details>
